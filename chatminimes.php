@@ -100,7 +100,7 @@ echo "\n".'<!-- Messenger -->
 			<form id="login_anonymous" action="#" method="post">
 			Use an anonymous account
 				<input type="text" name="nick" placeholder="nickname" />
-				<input type="text" name="room" value="piazza@'. $GLOBALS['conference'] .'" placeholder="piazza@'. $GLOBALS['conference'] .'" />
+				<input type="text" name="room" value="piazza@'. $GLOBALS['conference'] .'" placeholder="'. $group  .'" />
 				<input type="submit" value="Join" class="botton" />
 			</form>
 		</div>		
