@@ -41,7 +41,7 @@ add_action( 'init', 'my_plugin_init' );
 
 function my_plugin_init() {
       $plugin_dir = basename(dirname(__FILE__));
-      load_plugin_textdomain( 'chatmini', null, $plugin_dir . '/languages/' );
+      load_plugin_textdomain( 'chatminimsnmsn', null, $plugin_dir . '/languages/' );
       wp_register_script( 'barra-script', plugins_url('/script/barra.js', __FILE__) );
       wp_register_style( 'barra-style', plugins_url('/script/barra.css', __FILE__) );
 }
@@ -113,13 +113,13 @@ function chatme_mini_menu() {
 
 function register_mysettings() {
 	//register our settings
-	register_setting('mini_chat', 'yet_jquery');
-	register_setting('mini_chat', 'language');
-	register_setting('mini_chat', 'auto_login');
-	register_setting('mini_chat', 'auto_show');
-	register_setting('mini_chat', 'animate');
-	register_setting('mini_chat', 'join_groupchats');
-	register_setting('mini_chat', 'all');
+	register_setting('mini_chat_msn_msn', 'yet_jquery');
+	register_setting('mini_chat_msn', 'language');
+	register_setting('mini_chat_msn', 'auto_login');
+	register_setting('mini_chat_msn', 'auto_show');
+	register_setting('mini_chat_msn', 'animate');
+	register_setting('mini_chat_msn', 'join_groupchats');
+	register_setting('mini_chat_msn', 'all');
 }
 
 function mini_jappix_options() {
@@ -129,43 +129,43 @@ function mini_jappix_options() {
  ?>
  <div class="wrap">
 <h2>Chatme.im Mini Messenger</h2>
-<p><?php _e("For more information visit <a href='http://www.chatme.im' target='_blank'>www.chatme.im</a>", 'chatmini'); ?></p>
+<p><?php _e("For more information visit <a href='http://www.chatme.im' target='_blank'>www.chatme.im</a>", 'chatminimsn'); ?></p>
 
 <form method="post" action="options.php">
-    <?php settings_fields( 'mini_chat' ); ?>
+    <?php settings_fields( 'mini_chat_msn' ); ?>
     <table class="form-table">
         <tr valign="top">
-        <th scope="row"><?php _e("Auto login to the account", 'chatmini'); ?></th>
+        <th scope="row"><?php _e("Auto login to the account", 'chatminimsn'); ?></th>
         <td><input type="checkbox" name="auto_login" value="1" <?php checked('1', get_option('auto_login')); ?> /></td>
         </tr>
 		
 		<tr valign="top">
-        <th scope="row"><?php _e("Auto show the opened chat", 'chatmini'); ?></th>
+        <th scope="row"><?php _e("Auto show the opened chat", 'chatminimsn'); ?></th>
         <td><input type="checkbox" name="auto_show" value="1" <?php checked('1', get_option('auto_show')); ?> /></td>
         </tr>
 
 		<tr valign="top">
-        <th scope="row"><?php _e("Display an animated image when the user is not connected", 'chatmini'); ?></th>
+        <th scope="row"><?php _e("Display an animated image when the user is not connected", 'chatminimsn'); ?></th>
         <td><input type="checkbox" name="animate" value="1" <?php checked('1', get_option('animate')); ?> /></td>
         </tr>
 		
 		<tr valign="top">
-        <th scope="row"><?php _e("Chat rooms to join (if any)", 'chatmini'); ?></th>
-        <td><input type="text" name="join_groupchats" value="<?php echo get_option('join_groupchats'); ?>" /> <?php echo $GLOBALS['conference']; ?><br/><?php _e("For more use comma separator (example: piazza, scuola)", 'chatmini'); ?></td>
+        <th scope="row"><?php _e("Chat rooms to join (if any)", 'chatminimsn'); ?></th>
+        <td><input type="text" name="join_groupchats" value="<?php echo get_option('join_groupchats'); ?>" /> <?php echo $GLOBALS['conference']; ?><br/><?php _e("For more use comma separator (example: piazza, scuola)", 'chatminimsn'); ?></td>
         </tr>
 		
 		<tr valign="top">
-        <th scope="row"><?php _e("jQuery is yet included", 'chatmini'); ?></th>
+        <th scope="row"><?php _e("jQuery is yet included", 'chatminimsn'); ?></th>
         <td><input type="checkbox" name="yet_jquery" value="1" <?php checked('1', get_option('yet_jquery')); ?> /></td>
         </tr>
 
 		<tr valign="top">
-        <th scope="row"><?php _e("Available only for logged users", 'chatmini'); ?></th>
+        <th scope="row"><?php _e("Available only for logged users", 'chatminimsn'); ?></th>
         <td><input type="checkbox" name="all" value="0" <?php checked('0', get_option('all')) ?> /></td>
         </tr>
 
         <tr valign="top">
-        <th scope="row"><?php _e("Mini Jappix language", 'chatmini'); ?></th>
+        <th scope="row"><?php _e("Mini Jappix language", 'chatminimsn'); ?></th>
         <td>
         <select id="language" name="language">
         <option value="de" <?php selected('de', get_option('language')); ?>>Deutsch</option>
@@ -187,7 +187,7 @@ function mini_jappix_options() {
     </table>
     
     <p class="submit">
-    <input type="submit" class="button-primary" value="<?php _e('Save Changes', 'chatmini') ?>" />
+    <input type="submit" class="button-primary" value="<?php _e('Save Changes', 'chatminimsn') ?>" />
     </p>
 
 </form>
