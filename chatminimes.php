@@ -113,7 +113,7 @@ function chatme_mini_menu() {
 
 function register_mysettings() {
 	//register our settings
-	register_setting('mini_chat_msn_msn', 'yet_jquery');
+	register_setting('mini_chat_msn', 'yet_jquery');
 	register_setting('mini_chat_msn', 'language');
 	register_setting('mini_chat_msn', 'auto_login');
 	register_setting('mini_chat_msn', 'auto_show');
@@ -124,7 +124,7 @@ function register_mysettings() {
 
 function mini_jappix_options() {
   if (!current_user_can('manage_options'))  {
-    wp_die( __('You do not have sufficient permissions to access this page.', 'minijappix') );
+    wp_die( __('You do not have sufficient permissions to access this page.', 'chatminimsn') );
   }
  ?>
  <div class="wrap">
