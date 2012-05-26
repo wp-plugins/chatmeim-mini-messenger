@@ -3,7 +3,7 @@
 Plugin Name: Chatme.im Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 0.1 beta 2
+Version: 0.1 beta 3
 Author: Thomas Camaran
 Author URI: http://www.chatme.im
 */
@@ -27,10 +27,6 @@ Author URI: http://www.chatme.im
 
 //Custom Variables (YOU NOT EDIT)
 $GLOBALS['$jappix_url'] = "https://webchat.chatme.im"; 	//jappix installation
-$GLOBALS['conference'] = "conference.chatme.im"; 		//server of conference
-$GLOBALS['anonymous'] = "anonymous.chatme.im"; 			//Server for anonymous chat
-$GLOBALS['resource'] = $_SERVER['SERVER_NAME']; 		//resource for chat
-$GLOBALS['default_room'] = "piazza, support"; 					//default room
 
 add_action('wp_head', 'get_chatme_mini_head');
 add_action('wp_footer', 'get_chatme_mini_footer');
@@ -76,7 +72,6 @@ if ($all || is_user_logged_in()) {
 	}
 	$group = substr ($group, 0, -2);
 	$lng = get_option('language');
-	$nickname = get_userdata(get_current_user_id())->user_login;
 	wp_enqueue_script( 'barra-script' );
 	wp_enqueue_style( 'barra-style' );
 	echo "\n".'<script type="text/javascript" src="'.$GLOBALS['$jappix_url'].'/php/get.php?l='.$lng.'&amp;t=js&amp;g=mini.xml'.$jquery.'"></script>';
@@ -84,6 +79,7 @@ if ($all || is_user_logged_in()) {
 }
 
 function get_chatme_mini_footer() {
+$nickname = get_userdata(get_current_user_id())->user_login;
 echo "\n".'<!-- Messenger -->
 	<div class="bar">
 		<div class="account">
@@ -100,7 +96,7 @@ echo "\n".'<!-- Messenger -->
 			<form id="login_anonymous" action="#" method="post">
 			Use an anonymous account
 				<input type="text" name="nick" placeholder="nickname" value="'. $nickname .'" />
-				<input type="text" name="room" value="'. $group .'" placeholder="'. $group  .'" />
+				<input type="text" name="room" value="piazza@conference.chatme.im" placeholder="piazza@conference.chatme.im" />
 				<input type="submit" value="Join" class="botton" />
 			</form>
 		</div>		
@@ -134,35 +130,6 @@ function mini_jappix_options() {
 <form method="post" action="options.php">
     <?php settings_fields( 'mini_chat_msn' ); ?>
     <table class="form-table">
-        <tr valign="top">
-        <th scope="row"><?php _e("Auto login to the account", 'chatminimsn'); ?></th>
-        <td><input type="checkbox" name="auto_login" value="1" <?php checked('1', get_option('auto_login')); ?> /></td>
-        </tr>
-		
-		<tr valign="top">
-        <th scope="row"><?php _e("Auto show the opened chat", 'chatminimsn'); ?></th>
-        <td><input type="checkbox" name="auto_show" value="1" <?php checked('1', get_option('auto_show')); ?> /></td>
-        </tr>
-
-		<tr valign="top">
-        <th scope="row"><?php _e("Display an animated image when the user is not connected", 'chatminimsn'); ?></th>
-        <td><input type="checkbox" name="animate" value="1" <?php checked('1', get_option('animate')); ?> /></td>
-        </tr>
-		
-		<tr valign="top">
-        <th scope="row"><?php _e("Chat rooms to join (if any)", 'chatminimsn'); ?></th>
-        <td><input type="text" name="join_groupchats" value="<?php echo get_option('join_groupchats'); ?>" /> <?php echo $GLOBALS['conference']; ?><br/><?php _e("For more use comma separator (example: piazza, scuola)", 'chatminimsn'); ?></td>
-        </tr>
-		
-		<tr valign="top">
-        <th scope="row"><?php _e("jQuery is yet included", 'chatminimsn'); ?></th>
-        <td><input type="checkbox" name="yet_jquery" value="1" <?php checked('1', get_option('yet_jquery')); ?> /></td>
-        </tr>
-
-		<tr valign="top">
-        <th scope="row"><?php _e("Available only for logged users", 'chatminimsn'); ?></th>
-        <td><input type="checkbox" name="all" value="0" <?php checked('0', get_option('all')) ?> /></td>
-        </tr>
 
         <tr valign="top">
         <th scope="row"><?php _e("Mini Jappix language", 'chatminimsn'); ?></th>

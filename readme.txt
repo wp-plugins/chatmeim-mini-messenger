@@ -4,7 +4,7 @@ Donate link: http://www.chatme.im
 Tags: chat, jabber, jappix, mini, xmpp
 Requires at least: 3.3
 Tested up to: 3.4
-Stable tag: 0.1 beta 2
+Stable tag: 0.1 beta 3
 
 This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
 
@@ -25,7 +25,7 @@ Special Thanks:
 
 Hand-crafted, and made with love, in [Rosolina](http://rosolina.me), Italy.
 
-Based on [Jappix](https://project.jappix.com/) and [Jappix Mini](https://mini.jappix.com/).
+Based on [Jappix](http://jappix.org/) and [Jappix Mini](https://mini.jappix.com/).
 
 == Installation ==
 
@@ -55,6 +55,11 @@ Yes!!! it's a Jabber/XMPP server, you see [here](http://chatme.im/prima-connessi
 
 == Changelog ==
 
+= 0.1 beta 3 =
+* Bug Fix
+* Compressed JS
+* Compressed CSS
+
 = 0.1 beta 2 =
 * Bug Fix
 
@@ -62,6 +67,11 @@ Yes!!! it's a Jabber/XMPP server, you see [here](http://chatme.im/prima-connessi
 * First public version
 
 == Upgrade Notice ==
+
+= 0.1 beta 3 =
+* Bug Fix
+* Compressed JS
+* Compressed CSS
 
 = 0.1 beta 2 =
 * Bug Fix
