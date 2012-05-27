@@ -3,7 +3,7 @@
 Plugin Name: Chatme.im Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 0.1 beta 4
+Version: 0.1 beta 5
 Author: Thomas Camaran
 Author URI: http://www.chatme.im
 */
@@ -43,7 +43,12 @@ function my_plugin_init() {
 }
 
 function get_chatme_mini_head() {
+
+	if(get_option('yet_jquery') != 1) 
+		$jquery = "&amp;f=jquery.js";
+		
 	$lng = get_option('language');
+	
 	wp_enqueue_script( 'barra-script' );
 	wp_enqueue_style( 'barra-style' );
 	echo "\n".'<script type="text/javascript" src="'.$GLOBALS['$jappix_url'].'/php/get.php?l='.$lng.'&amp;t=js&amp;g=mini.xml'.$jquery.'"></script>';
@@ -80,6 +85,7 @@ function chatme_mini_menu() {
 
 function register_mysettings() {
 	//register our settings
+	register_setting('mini_chat_msn', 'yet_jquery');
 	register_setting('mini_chat_msn', 'language');
 }
 
@@ -95,6 +101,11 @@ function mini_jappix_options() {
 <form method="post" action="options.php">
     <?php settings_fields( 'mini_chat_msn' ); ?>
     <table class="form-table">
+    
+        <tr valign="top"> 
+        <th scope="row"><?php _e("jQuery is yet included", 'chatminimsn'); ?></th> 
+        <td><input type="checkbox" name="yet_jquery" value="1" <?php checked('1', get_option('yet_jquery')); ?> /></td> 
+        </tr>
 
         <tr valign="top">
         <th scope="row"><?php _e("Mini Jappix language", 'chatminimsn'); ?></th>
