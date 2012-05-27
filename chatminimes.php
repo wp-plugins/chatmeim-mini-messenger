@@ -3,7 +3,7 @@
 Plugin Name: Chatme.im Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 0.1 beta 3
+Version: 0.1 beta 4
 Author: Thomas Camaran
 Author URI: http://www.chatme.im
 */
@@ -43,39 +43,10 @@ function my_plugin_init() {
 }
 
 function get_chatme_mini_head() {
-	if(get_option('all') == 1 || get_option('all') == '')
-		$all = true;
-	else
-		$all = false;
-if ($all || is_user_logged_in()) {
-	if(get_option('auto_login') == 1)
-		$auto_login = "true";
-	else
-		$auto_login = "false";
-	if(get_option('animate') == 1)
-		$animate = "true";
-	else
-		$animate = "false";
-	if(get_option('auto_show') == 1)
-		$auto_show = "true";
-	else
-		$auto_show = "false";
-	if(get_option('yet_jquery') != 1)
-		$jquery = "&amp;f=jquery.js";
-	if(get_option('join_groupchats') == '')
-		$join_groupchats = $GLOBALS['default_room'];
-	else
-		$join_groupchats = get_option('join_groupchats');
-	$groups = explode(',', $join_groupchats);
-	foreach ($groups as $value) {
-		$group .= '"'.trim($value) . '@' . $GLOBALS['conference'] .'", '; 
-	}
-	$group = substr ($group, 0, -2);
 	$lng = get_option('language');
 	wp_enqueue_script( 'barra-script' );
 	wp_enqueue_style( 'barra-style' );
 	echo "\n".'<script type="text/javascript" src="'.$GLOBALS['$jappix_url'].'/php/get.php?l='.$lng.'&amp;t=js&amp;g=mini.xml'.$jquery.'"></script>';
-}
 }
 
 function get_chatme_mini_footer() {
@@ -109,13 +80,7 @@ function chatme_mini_menu() {
 
 function register_mysettings() {
 	//register our settings
-	register_setting('mini_chat_msn', 'yet_jquery');
 	register_setting('mini_chat_msn', 'language');
-	register_setting('mini_chat_msn', 'auto_login');
-	register_setting('mini_chat_msn', 'auto_show');
-	register_setting('mini_chat_msn', 'animate');
-	register_setting('mini_chat_msn', 'join_groupchats');
-	register_setting('mini_chat_msn', 'all');
 }
 
 function mini_jappix_options() {
