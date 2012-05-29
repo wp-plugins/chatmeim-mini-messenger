@@ -52,6 +52,7 @@ Yes!!! it's a Jabber/XMPP server, you see [here](http://chatme.im/prima-connessi
 
 1. The chat form
 2. The chat admin panel
+3. The chat login form
 
 == Changelog ==
 
