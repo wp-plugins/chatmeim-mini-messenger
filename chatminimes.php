@@ -37,7 +37,7 @@ add_action( 'init', 'my_plugin_init' );
 
 function my_plugin_init() {
       $plugin_dir = basename(dirname(__FILE__));
-      load_plugin_textdomain( 'chatmeim-mini-messengermsn', null, $plugin_dir . '/languages/' );
+      load_plugin_textdomain( 'chatmeim-mini-messenger', null, $plugin_dir . '/languages/' );
       wp_register_script( 'barra-script', plugins_url('/script/barra.js', __FILE__) );
       wp_register_style( 'barra-style', plugins_url('/script/barra.css', __FILE__) );
 }
