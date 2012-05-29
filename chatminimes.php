@@ -37,7 +37,7 @@ add_action( 'init', 'my_plugin_init' );
 
 function my_plugin_init() {
       $plugin_dir = basename(dirname(__FILE__));
-      load_plugin_textdomain( 'chatminimsnmsn', null, $plugin_dir . '/languages/' );
+      load_plugin_textdomain( 'chatmeim-mini-messengermsn', null, $plugin_dir . '/languages/' );
       wp_register_script( 'barra-script', plugins_url('/script/barra.js', __FILE__) );
       wp_register_style( 'barra-style', plugins_url('/script/barra.css', __FILE__) );
 }
@@ -99,29 +99,29 @@ function register_mysettings() {
 
 function mini_jappix_options() {
   if (!current_user_can('manage_options'))  {
-    wp_die( __('You do not have sufficient permissions to access this page.', 'chatminimsn') );
+    wp_die( __('You do not have sufficient permissions to access this page.', 'chatmeim-mini-messenger') );
   }
  ?>
  <div class="wrap">
 <h2>Chatme.im Mini Messenger</h2>
-<p><?php _e("For more information visit <a href='http://www.chatme.im' target='_blank'>www.chatme.im</a>", 'chatminimsn'); ?></p>
+<p><?php _e("For more information visit <a href='http://www.chatme.im' target='_blank'>www.chatme.im</a>", 'chatmeim-mini-messenger'); ?></p>
 
 <form method="post" action="options.php">
     <?php settings_fields( 'mini_chat_msn' ); ?>
     <table class="form-table">
     
         <tr valign="top"> 
-        <th scope="row"><?php _e("jQuery is yet included", 'chatminimsn'); ?></th> 
+        <th scope="row"><?php _e("jQuery is yet included", 'chatmeim-mini-messenger'); ?></th> 
         <td><input type="checkbox" name="yet_jquery" value="1" <?php checked('1', get_option('yet_jquery')); ?> /></td> 
         </tr>
         
         <tr valign="top">
-        <th scope="row"><?php _e("Chat rooms to join (if any)", 'chatminimsn'); ?></th>
-        <td><input type="text" name="join_groupchats" value="<?php echo get_option('join_groupchats'); ?>" /> @conference.chatme.im<br/><?php _e("Only one", 'chatminimsn'); ?></td>
+        <th scope="row"><?php _e("Chat rooms to join (if any)", 'chatmeim-mini-messenger'); ?></th>
+        <td><input type="text" name="join_groupchats" value="<?php echo get_option('join_groupchats'); ?>" /> @conference.chatme.im<br/><?php _e("Only one", 'chatmeim-mini-messenger'); ?></td>
         </tr>
 
         <tr valign="top">
-        <th scope="row"><?php _e("Mini Jappix language", 'chatminimsn'); ?></th>
+        <th scope="row"><?php _e("Mini Jappix language", 'chatmeim-mini-messenger'); ?></th>
         <td>
         <select id="language" name="language">
         <option value="de" <?php selected('de', get_option('language')); ?>>Deutsch</option>
@@ -143,7 +143,7 @@ function mini_jappix_options() {
     </table>
     
     <p class="submit">
-    <input type="submit" class="button-primary" value="<?php _e('Save Changes', 'chatminimsn') ?>" />
+    <input type="submit" class="button-primary" value="<?php _e('Save Changes', 'chatmeim-mini-messenger') ?>" />
     </p>
 
 </form>
