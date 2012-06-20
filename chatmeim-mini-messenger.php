@@ -3,7 +3,7 @@
 Plugin Name: Chatme.im Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 1.0.1
+Version: 1.0.2
 Author: camaran
 Author URI: http://www.chatme.im
 */
@@ -26,7 +26,7 @@ Author URI: http://www.chatme.im
 */
 
 //Custom Variables (YOU NOT EDIT)
-$GLOBALS['$jappix_url'] = "https://webchat.chatme.im"; 	//jappix installation
+$GLOBALS['jappix_url'] = "https://webchat.chatme.im"; 	//jappix installation
 
 add_action('wp_head', 'get_chatme_mini_head');
 add_action('wp_footer', 'get_chatme_mini_footer');
@@ -51,7 +51,7 @@ function get_chatme_mini_head() {
 	
 	wp_enqueue_script( 'barra-script' );
 	wp_enqueue_style( 'barra-style' );
-	echo "\n".'<script type="text/javascript" src="'.$GLOBALS['$jappix_url'].'/php/get.php?l='.$lng.'&amp;t=js&amp;g=mini.xml'.$jquery.'"></script>';
+	echo "\n".'<script type="text/javascript" src="'.$GLOBALS['jappix_url'].'/php/get.php?l='.$lng.'&amp;t=js&amp;g=mini.xml'.$jquery.'"></script>';
 }
 
 function get_chatme_mini_footer() {
@@ -105,6 +105,7 @@ function mini_jappix_options() {
  <div class="wrap">
 <h2>Chatme.im Mini Messenger</h2>
 <p><?php _e("For more information visit <a href='http://www.chatme.im' target='_blank'>www.chatme.im</a>", 'chatmeim-mini-messenger'); ?> - <a href="https://webchat.chatme.im/?r=support" target="_blank">Support Chat Room</a></p>
+<p><?php _e("For subscribe your account visit <a href='http://chatme.im/plugins/registration/sign-up.jsp' target='_blank'>http://chatme.im/plugins/registration/sign-up.jsp</a>", 'chatmini'); ?></p> 
 
 <form method="post" action="options.php">
     <?php settings_fields( 'mini_chat_msn' ); ?>
