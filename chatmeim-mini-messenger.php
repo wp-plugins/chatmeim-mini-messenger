@@ -3,7 +3,7 @@
 Plugin Name: Chatme.im Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 1.0.4
+Version: 1.0.5
 Author: camaran
 Author URI: http://www.chatme.im
 */
@@ -146,6 +146,7 @@ function mini_jappix_options() {
     <p class="submit">
     <input type="submit" class="button-primary" value="<?php _e('Save Changes', 'chatmeim-mini-messenger') ?>" />
     </p>
+    <p>For Ever request you can use our <a href="http://chatme.im/forums" target="_blank">forum</a></p>
 
 </form>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
