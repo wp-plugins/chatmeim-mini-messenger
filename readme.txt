@@ -29,6 +29,8 @@ Based on [Jappix](http://jappix.org/) and [Jappix Mini](https://mini.jappix.com/
 
 For Every request visit our [Forum](http://chatme.im/forums) 
 
+[youtube http://www.youtube.com/watch?v=KnOsh80m1FM]
+
 == Installation ==
 
 This section describes how to install the plugin and get it working.
