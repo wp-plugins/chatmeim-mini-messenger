@@ -29,7 +29,7 @@ Based on [Converse.js](http://conversejs.org/).
 
 For Every request visit our [Forum](http://chatme.im/forums) 
 
-[youtube http://www.youtube.com/watch?v=KnOsh80m1FM]
+[youtube http://www.youtube.com/watch?v=h5PCFDT-5YY]
 
 == Installation ==
 
