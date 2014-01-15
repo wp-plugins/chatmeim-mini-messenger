@@ -3,7 +3,7 @@
 Plugin Name: Chatme.im Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 3.0
+Version: 3.1
 Author: camaran
 Author URI: http://www.chatme.im
 */
@@ -25,13 +25,11 @@ Author URI: http://www.chatme.im
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-//Custom Variables (YOU NOT EDIT)
-$GLOBALS['converse_url'] = "https://converse.chatme.im"; 	//converse installation
-
-add_action('wp_head', 'get_chatme_mini_head');
-add_action('wp_footer', 'get_chatme_mini_footer');
-add_action('admin_menu', 'chatme_mini_menu');
-add_action('admin_init', 'register_mysettings' );
+	//converse installation
+add_action('wp_head', 'get_chatme_messenger_head');
+add_action('wp_footer', 'get_chatme_messenger_footer');
+add_action('admin_menu', 'chatme_messenger_menu');
+add_action('admin_init', 'register_messenger_mysettings' );
 
 add_action( 'init', 'my_plugin_init' );
 
@@ -40,14 +38,13 @@ function my_plugin_init() {
       load_plugin_textdomain( 'chatmeim-mini-messenger', null, $plugin_dir . '/languages/' );
 }
 
-function get_chatme_mini_head() {
+function get_chatme_messenger_head() {
 		
-	$lng = get_option('language');
-	echo "\n".'<link rel="stylesheet" type="text/css" href="'.$GLOBALS['converse_url'].'/converse.css">';
-	echo "\n".'<script type="text/javascript" src="'.$GLOBALS['converse_url'].'/builds/converse.min.js"></script>';
+	echo "\n".'<link rel="stylesheet" type="text/css" href="'.plugins_url( '/core/converse.css' , __FILE__ ).'">';
+	echo "\n".'<script type="text/javascript" src="'.plugins_url( '/core/builds/converse.min.js' , __FILE__ ).'"></script>';
 }
 
-function get_chatme_mini_footer() {
+function get_chatme_messenger_footer() {
 
 	if(get_option('language') == '')
 		$lng = "en";
@@ -72,17 +69,16 @@ echo "\n".'<!-- Messenger -->
 	<div id="conversejs"></div>';
 }
 
-function chatme_mini_menu() {
-  add_options_page('Chatme.im Mini Messenger Options', 'Chatme.im Mini Messenger', 'manage_options', 'my-unique-identifier', 'mini_jappix_options');
+function chatme_messenger_menu() {
+  add_options_page('Chatme.im Mini Messenger Options', 'Chatme.im Mini Messenger', 'manage_options', 'my-messenger-identifier', 'mini_messenger_options');
 }
 
-function register_mysettings() {
+function register_messenger_mysettings() {
 	//register our settings
-	register_setting('mini_chat_msn', 'language');
-	register_setting('mini_chat_msn', 'join_groupchats');
+	register_setting('messenger_chat_msn', 'language');
 }
 
-function mini_jappix_options() {
+function mini_messenger_options() {
   if (!current_user_can('manage_options'))  {
     wp_die( __('You do not have sufficient permissions to access this page.', 'chatmeim-mini-messenger') );
   }
@@ -93,11 +89,11 @@ function mini_jappix_options() {
 <p><?php _e("For subscribe your account visit <a href='http://api.chatme.im/register_web' target='_blank'>http://api.chatme.im/register_web</a>", 'chatmini'); ?></p> 
 
 <form method="post" action="options.php">
-    <?php settings_fields( 'mini_chat_msn' ); ?>
+    <?php settings_fields( 'messenger_chat_msn' ); ?>
     <table class="form-table">
     
         <tr valign="top">
-        <th scope="row"><?php _e("Mini Jappix language", 'chatmeim-mini-messenger'); ?></th>
+        <th scope="row"><?php _e("Mini Messenger language", 'chatmeim-mini-messenger'); ?></th>
         <td>
         <select id="language" name="language">
         <option value="de" <?php selected('de', get_option('language')); ?>>Deutsch</option>
