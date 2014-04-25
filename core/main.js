@@ -15,8 +15,8 @@ require.config({
         "bigint": "src/bigint",
         "crypto.core": "components/otr/vendor/cryptojs/core",
         "crypto.enc-base64": "components/otr/vendor/cryptojs/enc-base64",
-        "crypto.md5": "components/crypto-js/src/md5",
-        "crypto.evpkdf": "components/crypto-js/src/evpkdf",
+        "crypto.md5": "components/crypto-js-evanvosberg/src/md5",
+        "crypto.evpkdf": "components/crypto-js-evanvosberg/src/evpkdf",
         "crypto.cipher-core": "components/otr/vendor/cryptojs/cipher-core",
         "crypto.aes": "components/otr/vendor/cryptojs/aes",
         "crypto.sha1": "components/otr/vendor/cryptojs/sha1",
@@ -43,13 +43,23 @@ require.config({
             //module value.
             exports: 'Backbone'
         },
-        'jquery.tinysort': { deps: ['jquery'] },
-        'strophe': { deps: ['jquery'] },
-        'underscore':   { exports: '_' },
-        'strophe.muc':  { deps: ['strophe', 'jquery'] },
-        'strophe.roster':   { deps: ['strophe'] },
-        'strophe.vcard':    { deps: ['strophe'] },
-        'strophe.disco':    { deps: ['strophe'] }
+        'underscore':           { exports: '_' },
+        'crypto.aes':           { deps: ['crypto.cipher-core'] },
+        'crypto.cipher-core':   { deps: ['crypto.enc-base64', 'crypto.evpkdf'] },
+        'crypto.enc-base64':    { deps: ['crypto.core'] },
+        'crypto.evpkdf':        { deps: ['crypto.md5'] },
+        'crypto.hmac':          { deps: ['crypto.core'] },
+        'crypto.md5':           { deps: ['crypto.core'] },
+        'crypto.mode-ctr':      { deps: ['crypto.cipher-core'] },
+        'crypto.pad-nopadding': { deps: ['crypto.cipher-core'] },
+        'crypto.sha1':          { deps: ['crypto.core'] },
+        'crypto.sha256':        { deps: ['crypto.core'] },
+        'jquery.tinysort':      { deps: ['jquery'] },
+        'strophe':              { deps: ['jquery'] },
+        'strophe.disco':        { deps: ['strophe'] },
+        'strophe.muc':          { deps: ['strophe', 'jquery'] },
+        'strophe.roster':       { deps: ['strophe'] },
+        'strophe.vcard':        { deps: ['strophe'] }
     }
 });
 

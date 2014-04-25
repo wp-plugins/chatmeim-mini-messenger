@@ -80,7 +80,7 @@
     };
 
     utils.openChatBoxFor = function (jid) {
-        converse.rosterview.rosteritemviews[jid].openChat(mock.event);
+        return converse.rosterview.rosteritemviews[jid].openChat(mock.event);
     };
 
     utils.clearChatBoxMessages = function (jid) {
@@ -119,6 +119,11 @@
             });
         }
         return this;
+    };
+
+    utils.sendMessage = function (chatboxview, message) {
+        chatboxview.$el.find('.chat-textarea').val(message);
+        chatboxview.$el.find('textarea.chat-textarea').trigger($.Event('keypress', {keyCode: 13}));
     };
     return utils;
 }));
