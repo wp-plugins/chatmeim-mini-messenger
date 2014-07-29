@@ -1,28 +1,11 @@
 <?php
 /*
-Plugin Name: Chatme.im Mini Messenger
+Plugin Name: ChatMe Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 3.3.1
+Version: 3.3.2
 Author: camaran
 Author URI: http://www.chatme.im
-*/
-
-/*  Copyright 2012  Thomas Camaran  (email : camaran@gmail.com)
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 	//converse installation
@@ -46,15 +29,18 @@ function get_chatme_messenger_head() {
 
 function get_chatme_messenger_footer() {
 
-	if(get_option('language') == '')
-		$lng = "en";
-	else
-		$lng = get_option('language');
+	$lng = (get_option('language') == '') ? "en" : get_option('language');
+	$url = (get_option('hosted') == '1') ? "http://api.webchat.domains/http-bind/" : "http://api.chatme.im/http-bind/";
+
+	//if(get_option('language') == '')
+	//	$lng = "en";
+	//else
+	//	$lng = get_option('language');
 		
-	if(get_option('hosted') == '1')
-		$url = "http://api.webchat.domains/http-bind/";
-	else
-		$url = "http://api.chatme.im/http-bind/";
+	//if(get_option('hosted') == '1')
+	//	$url = "http://api.webchat.domains/http-bind/";
+	//else
+	//	$url = "http://api.chatme.im/http-bind/";
 
 echo "\n".'<!-- Messenger -->
 	<script>
@@ -62,7 +48,7 @@ echo "\n".'<!-- Messenger -->
 		    converse.initialize({
 		        auto_list_rooms: false,
 		        auto_subscribe: false,
-				bosh_service_url: \''.$url.'\',
+		        bosh_service_url: \''.$url.'\',
 		        hide_muc_server: false,
 		        i18n: locales.'.$lng.',
 		        prebind: false,
@@ -75,7 +61,7 @@ echo "\n".'<!-- Messenger -->
 }
 
 function chatme_messenger_menu() {
-  add_options_page('Chatme.im Mini Messenger Options', 'Chatme.im Mini Messenger', 'manage_options', 'my-messenger-identifier', 'mini_messenger_options');
+  add_options_page('ChatMe Mini Messenger Options', 'ChatMe Mini Messenger', 'manage_options', 'my-messenger-identifier', 'mini_messenger_options');
 }
 
 function register_messenger_mysettings() {
@@ -89,7 +75,7 @@ function mini_messenger_options() {
   }
  ?>
  <div class="wrap">
-<h2>Chatme.im Mini Messenger</h2>
+<h2>ChatMe Mini Messenger</h2>
 <p><?php _e("For more information visit <a href='http://www.chatme.im' target='_blank'>www.chatme.im</a>", 'chatmeim-mini-messenger'); ?> - <a href="https://webchat.chatme.im/?r=support" target="_blank">Support Chat Room</a></p>
 <p><?php _e("For subscribe your account visit <a href='http://api.chatme.im/register_web' target='_blank'>http://api.chatme.im/register_web</a>", 'chatmini'); ?></p> 
 
