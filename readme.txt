@@ -4,7 +4,7 @@ Donate link: http://www.chatme.im
 Tags: chat, jabber, jappix, mini, xmpp, chatme
 Requires at least: 3.8
 Tested up to: 4.1
-Stable tag: 3.3.11
+Stable tag: 4.0
 
 This plugin add the javascript code for ChatMe Mini Messenger a Jabber/XMPP chat for your WordPress.
 
@@ -59,6 +59,11 @@ Yes!!! it's a Jabber/XMPP server, you see [here](http://chatme.im/prima-connessi
 
 == Changelog ==
 
+= 4.0 =
+* Rewrited Object PHP
+* Require PHP 5
+* ConverseJS [0.8.5](https://github.com/jcbrand/converse.js/releases/tag/v0.8.5) and [0.8.6](https://github.com/jcbrand/converse.js/releases/tag/v0.8.6)
+
 = 3.3.11 =
 * ConverseJS [0.8.4](https://github.com/jcbrand/converse.js/releases/tag/v0.8.4)
 
@@ -66,7 +71,7 @@ Yes!!! it's a Jabber/XMPP server, you see [here](http://chatme.im/prima-connessi
 * New http-bind server
 
 = 3.3.9 =
-* ConverseJS [0.8.3](https://github.com/jcbrand/converse.js/releases/tag/v0.8.3) e [0.8.2](https://github.com/jcbrand/converse.js/releases/tag/v0.8.2)
+* ConverseJS [0.8.3](https://github.com/jcbrand/converse.js/releases/tag/v0.8.3) and [0.8.2](https://github.com/jcbrand/converse.js/releases/tag/v0.8.2)
 
 = 3.3.8 =
 * ConverseJS [0.8.1](https://github.com/jcbrand/converse.js/releases/tag/v0.8.1)
@@ -163,6 +168,11 @@ Yes!!! it's a Jabber/XMPP server, you see [here](http://chatme.im/prima-connessi
 * First public version
 
 == Upgrade Notice ==
+
+= 4.0 =
+* Rewrited Object PHP
+* Require PHP 5
+* ConverseJS [0.8.5](https://github.com/jcbrand/converse.js/releases/tag/v0.8.5) and [0.8.6](https://github.com/jcbrand/converse.js/releases/tag/v0.8.6)
 
 = 3.3.11 =
 * ConverseJS [0.8.4](https://github.com/jcbrand/converse.js/releases/tag/v0.8.4)
