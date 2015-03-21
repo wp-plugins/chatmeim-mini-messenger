@@ -3,7 +3,7 @@
 Plugin Name: ChatMe Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 4.0.2
+Version: 4.0.3
 Author: camaran
 Author URI: http://www.chatme.im
 */
@@ -26,11 +26,11 @@ private $show_controlbox_by_default	= "true";
 private $xhr_user_search			= "false";
 
 	function __construct() {
-		add_action('wp_head', array( $this, 'get_chatme_messenger_head') );
-		add_action('wp_footer', array( $this, 'get_chatme_messenger_footer') );
-		add_action('admin_menu', array( $this, 'chatme_messenger_menu') );
-		add_action('admin_init', array( $this, 'register_messenger_mysettings') );
-		add_action( 'init', array( $this, 'my_plugin_init') );
+		add_action('wp_enqueue_scripts', 	array( $this, 'get_chatme_messenger_head') );
+		add_action('wp_footer', 			array( $this, 'get_chatme_messenger_footer') );
+		add_action('admin_menu', 			array( $this, 'chatme_messenger_menu') );
+		add_action('admin_init', 			array( $this, 'register_messenger_mysettings') );
+		add_action( 'init', 				array( $this, 'my_plugin_init') );
 	}
 
 	function my_plugin_init() {
@@ -40,8 +40,8 @@ private $xhr_user_search			= "false";
 
 	function get_chatme_messenger_head() {
 		
-		echo "\n".'<link rel="stylesheet" type="text/css" href="'.plugins_url( '/core/css/converse.min.css' , __FILE__ ).'">';
-		echo "\n".'<script src="'.plugins_url( '/core/converse.min.js' , __FILE__ ).'"></script>';
+		wp_enqueue_style( 'ConverseJS', plugins_url( '/core/css/converse.min.css', __FILE__ ), array(), $this->conver );
+		wp_enqueue_script( 'ConverseJS', plugins_url( '/core/converse.min.js', __FILE__ ), array(), $this->conver, false );
 	}
 
 	function get_chatme_messenger_footer() {
