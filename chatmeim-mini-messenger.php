@@ -3,7 +3,7 @@
 Plugin Name: ChatMe Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 4.0.3
+Version: 4.1.0
 Author: camaran
 Author URI: http://www.chatme.im
 */
@@ -31,12 +31,32 @@ private $xhr_user_search			= "false";
 		add_action('admin_menu', 			array( $this, 'chatme_messenger_menu') );
 		add_action('admin_init', 			array( $this, 'register_messenger_mysettings') );
 		add_action( 'init', 				array( $this, 'my_plugin_init') );
+		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_messenger_links') );
 	}
 
 	function my_plugin_init() {
       	$plugin_dir = basename(dirname(__FILE__));
       	load_plugin_textdomain( 'chatmeim-mini-messenger', null, $plugin_dir . $this->languages );
 	}
+	
+	function add_action_messenger_links ( $links ) {
+      	$mylinks = array( '<a href="' . admin_url( 'options-general.php?page=chatme-mini-messenger' ) . '">Settings</a>', );
+      	return array_merge( $links, $mylinks );
+    }
+
+      	function chatme_messenger_add_help_tab () {
+          	$screen = get_current_screen();
+
+          	$screen->add_help_tab( array(
+              	      	'id'		=> 'chatme_messenger_help_tab',
+              	      	'title'		=> __('Hosted Domain', 'chatmeim-mini-messenger'),
+              	      	'content'	=> '<p>' . __( 'Select this option if you have a domain hosted in ChatMe XMPP Server', 'chatmeim-mini-messenger' ) . '</p>',
+          	      	) );
+
+          	$screen->set_help_sidebar(
+                              __('<p><strong>Other Resources</strong></p><p><a href="http://xmpp.net" target="_blank">XMPP.net</a></p><p><a href="http://chatme.im" target="_blank">ChatMe Site</a></p>', 'chatmeim-mini-messenger')
+                             );
+      	      	}
 
 	function get_chatme_messenger_head() {
 		
@@ -50,7 +70,7 @@ private $xhr_user_search			= "false";
 		$url = (get_option('hosted') == $this->hosted) ? $this->webchat : $this->webchat_domains;
 
 	echo "\n".'<!-- Messenger -->
-		<script>
+		<script defer>
 			require([\'converse\'], function (converse) {
 		    	converse.initialize({
 		        	auto_list_rooms: ' . $this->auto_list_rooms . ',
@@ -70,7 +90,8 @@ private $xhr_user_search			= "false";
 	}
 
 	function chatme_messenger_menu() {
-  		add_options_page('ChatMe Mini Messenger Options', 'ChatMe Mini Messenger', 'manage_options', 'chatme-mini-messenger', array($this, 'mini_messenger_options') );
+  		$my_admin_page = add_options_page('ChatMe Mini Messenger Options', 'ChatMe Mini Messenger', 'manage_options', 'chatme-mini-messenger', array($this, 'mini_messenger_options') );
+		add_action('load-'.$my_admin_page, array( $this, 'chatme_messenger_add_help_tab') );
 	}
 
 	function register_messenger_mysettings() {
