@@ -1,38 +1,35 @@
+# Copyright (C) 2015 ChatMe Mini Messenger
+# This file is distributed under the same license as the ChatMe Mini Messenger package.
 msgid ""
 msgstr ""
-"Project-Id-Version: ChatMe Mini Messenger\n"
-"POT-Creation-Date: 2015-03-31 20:43+0100\n"
-"PO-Revision-Date: 2015-03-31 20:47+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: it_IT\n"
+"Project-Id-Version: ChatMe Mini Messenger 4.1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/chatmeim-mini-"
+"messenger\n"
+"POT-Creation-Date: 2015-03-31 19:18:23+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-03-31 21:23+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "X-Generator: Poedit 1.7.5\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Language: it_IT\n"
 
-#: chatmeim-mini-messenger.php:43
+#: chatmeim-mini-messenger.php:45
 msgid "Settings"
 msgstr "Impostazioni"
 
-#: chatmeim-mini-messenger.php:52 chatmeim-mini-messenger.php:129
+#: chatmeim-mini-messenger.php:54 chatmeim-mini-messenger.php:131
 msgid "Hosted Domain"
 msgstr "Dominio in Hosting"
 
-#: chatmeim-mini-messenger.php:53
+#: chatmeim-mini-messenger.php:55
 msgid "Select this option if you have a domain hosted in ChatMe XMPP Server"
 msgstr ""
 "Seleziona questa opzione se hai un dominio in hosting sul server ChatMe XMPP"
 
-#: chatmeim-mini-messenger.php:57
+#: chatmeim-mini-messenger.php:59
 msgid ""
 "<p><strong>Other Resources</strong></p><p><a href=\"http://xmpp.net\" target="
 "\"_blank\">XMPP.net</a></p><p><a href=\"http://chatme.im\" target=\"_blank"
@@ -42,11 +39,11 @@ msgstr ""
 "\"_blank\">XMPP.net</a></p><p><a href=\"http://chatme.im\" target=\"_blank"
 "\">Sito ChatMe</a></p>"
 
-#: chatmeim-mini-messenger.php:104
+#: chatmeim-mini-messenger.php:106
 msgid "You do not have sufficient permissions to access this page."
-msgstr "Non hai i permessi per visualizzare questa pagina."
+msgstr "Non hai i permessi per accedere a questa pagina"
 
-#: chatmeim-mini-messenger.php:109
+#: chatmeim-mini-messenger.php:111
 msgid ""
 "For more information visit <a href='http://www.chatme.im' "
 "target='_blank'>www.chatme.im</a>"
@@ -54,7 +51,7 @@ msgstr ""
 "Per maggiori informazioni visita <a href='http://www.chatme.im' "
 "target='_blank'>www.chatme.im</a>"
 
-#: chatmeim-mini-messenger.php:109
+#: chatmeim-mini-messenger.php:111
 msgid ""
 "<a href=\"https://webchat.chatme.im/?r=support\" target=\"_blank\">Support "
 "Chat Room</a></p>"
@@ -62,7 +59,7 @@ msgstr ""
 "<a href=\"https://webchat.chatme.im/?r=support\" target=\"_blank\">Gruppo "
 "chat di Supporto</a></p>"
 
-#: chatmeim-mini-messenger.php:110
+#: chatmeim-mini-messenger.php:112
 msgid ""
 "For subscribe your account visit <a href='http://chatme.im/servizi/domini-"
 "disponibili/' target='_blank'>http://webchat.chatme.im/register_web</a>"
@@ -70,11 +67,11 @@ msgstr ""
 "Per registrare un account visita <a href='http://chatme.im/servizi/domini-"
 "disponibili/' target='_blank'>http://webchat.chatme.im/register_web</a>"
 
-#: chatmeim-mini-messenger.php:117
+#: chatmeim-mini-messenger.php:119
 msgid "Mini Messenger language"
 msgstr "Lingua Mini Messenger"
 
-#: chatmeim-mini-messenger.php:129
+#: chatmeim-mini-messenger.php:131
 msgid ""
 "For Active an hosted domain with XMPP service <a href='http://chatme.im' "
 "target='_blank'>visit www.chatme.im</>"
@@ -82,14 +79,38 @@ msgstr ""
 "Per attivare un hosting XMPP visita <a href='http://chatme.im' "
 "target='_blank'>visit www.chatme.im</>"
 
-#: chatmeim-mini-messenger.php:134
+#: chatmeim-mini-messenger.php:136
 msgid "Save Changes"
 msgstr "Salva Cambiamenti"
 
-#: chatmeim-mini-messenger.php:135
+#: chatmeim-mini-messenger.php:137
 msgid ""
 "For Ever request you can use our <a href=\"http://chatme.im/forums\" target="
 "\"_blank\">forum</a>"
 msgstr ""
 "Per ogni richiesta puoi visitare il nostro <a href=\"http://chatme.im/forums"
 "\" target=\"_blank\">forum</a>"
+
+#. Plugin Name of the plugin/theme
+msgid "ChatMe Mini Messenger"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.chatme.im/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/"
+"XMPP chat for your WordPress."
+msgstr ""
+"Il plugin aggiunge il codice javascript per ChatMe Messenger un Jabber/XMPP "
+"chat per WordPress"
+
+#. Author of the plugin/theme
+msgid "camaran"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.chatme.im"
+msgstr ""
