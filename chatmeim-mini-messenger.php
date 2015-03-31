@@ -3,7 +3,7 @@
 Plugin Name: ChatMe Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 4.1.0
+Version: 4.1.1
 Author: camaran
 Author URI: http://www.chatme.im
 */
@@ -40,7 +40,7 @@ private $xhr_user_search			= "false";
 	}
 	
 	function add_action_messenger_links ( $links ) {
-      	$mylinks = array( '<a href="' . admin_url( 'options-general.php?page=chatme-mini-messenger' ) . '">Settings</a>', );
+      	$mylinks = array( '<a href="' . admin_url( 'options-general.php?page=chatme-mini-messenger' ) . '">' . __( 'Settings', 'chatmeim-mini-messenger' ) . '</a>', );
       	return array_merge( $links, $mylinks );
     }
 
@@ -106,7 +106,7 @@ private $xhr_user_search			= "false";
 	?>
  	<div class="wrap">
 	<h2>ChatMe Mini Messenger</h2>
-	<p><?php _e("For more information visit <a href='http://www.chatme.im' target='_blank'>www.chatme.im</a>", 'chatmeim-mini-messenger'); ?> - <a href="https://webchat.chatme.im/?r=support" target="_blank">Support Chat Room</a></p>
+	<p><?php _e("For more information visit <a href='http://www.chatme.im' target='_blank'>www.chatme.im</a>", 'chatmeim-mini-messenger'); ?> - <?php _e('<a href="https://webchat.chatme.im/?r=support" target="_blank">Support Chat Room</a></p>', 'chatmeim-mini-messenger'); ?>
 	<p><?php _e("For subscribe your account visit <a href='http://chatme.im/servizi/domini-disponibili/' target='_blank'>http://webchat.chatme.im/register_web</a>", 'chatmeim-mini-messenger'); ?></p> 
 
 	<form method="post" action="options.php">
@@ -132,7 +132,7 @@ private $xhr_user_search			= "false";
     	</table>
     
     	<p class="submit"><input type="submit" class="button-primary" value="<?php _e('Save Changes', 'chatmeim-mini-messenger') ?>" /></p>
-    	<p>For Ever request you can use our <a href="http://chatme.im/forums" target="_blank">forum</a></p>
+    	<p><?php _e('For Ever request you can use our <a href="http://chatme.im/forums" target="_blank">forum</a>',  'chatmeim-mini-messenger'); ?></p>
 
 	</form>
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
