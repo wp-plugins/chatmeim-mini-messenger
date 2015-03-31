@@ -6,6 +6,8 @@ Description: This plugin add the javascript code for Chatme.im Mini Messenger a 
 Version: 4.1.1
 Author: camaran
 Author URI: http://www.chatme.im
+Text Domain: chatmeim-mini-messenger
+Domain Path: /languages/
 */
 
 class ChatMe_Messenger {
