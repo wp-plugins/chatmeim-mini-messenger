@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: chat, jabber, jappix, mini, xmpp, chatme
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 4.1.4
+Stable tag: 4.1.5
 
 This plugin add the javascript code for ChatMe Mini Messenger a Jabber/XMPP chat for your WordPress.
 
