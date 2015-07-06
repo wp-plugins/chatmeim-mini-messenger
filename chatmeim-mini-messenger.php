@@ -3,7 +3,7 @@
 Plugin Name: ChatMe Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 4.2.0
+Version: 4.2.1
 Author: camaran
 Author URI: http://www.chatme.im
 Text Domain: chatmeim-mini-messenger
@@ -25,7 +25,7 @@ private $default	= array(
 				'prebind'				=> 'false',
 				'show_controlbox_by_default'		=> 'true',
 				'xhr_user_search'			=> 'false',
-				'conver'				=> '0.9.3',				
+				'conver'				=> '0.9.4',				
 				);
 
 	function __construct() {
@@ -63,10 +63,10 @@ private $default	= array(
 
 	function get_chatme_messenger_head() {
 		
-		wp_register_style( 'ConverseJS', plugins_url( '/core/css/converse.min.css', __FILE__ ), array(), $this->default['conver'] );
-		wp_enqueue_style( 'ConverseJS' );
-		wp_register_script( 'ConverseJS', plugins_url( '/core/converse.min.js', __FILE__ ), array(), $this->default['conver'], false );
-		wp_enqueue_script( 'ConverseJS' );
+		wp_register_style( 'ChatMe-Messenger', plugins_url( '/core/css/converse.min.css', __FILE__ ), array(), $this->default['conver'] );
+		wp_enqueue_style( 'ChatMe-Messenger' );
+		wp_register_script( 'ChatMe-Messenger', plugins_url( '/core/converse.min.js', __FILE__ ), array(), $this->default['conver'], false );
+		wp_enqueue_script( 'ChatMe-Messenger' );
 	}
 
 	function get_chatme_messenger_footer() {
