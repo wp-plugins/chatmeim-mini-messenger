@@ -3,7 +3,7 @@
 Plugin Name: ChatMe Mini Messenger
 Plugin URI: http://www.chatme.im/
 Description: This plugin add the javascript code for Chatme.im Mini Messenger a Jabber/XMPP chat for your WordPress.
-Version: 4.1.6
+Version: 4.2.0
 Author: camaran
 Author URI: http://www.chatme.im
 Text Domain: chatmeim-mini-messenger
@@ -12,23 +12,24 @@ Domain Path: /languages/
 
 class ChatMe_Messenger {
 
-private $languages 						= "/languages/"; 
-private $placeholder 					= " e.g. chatme.im";	
-private	$language 						= "en";
-private $hosted 						= 1;
-private $webchat 						= "https://bind.chatme.im/";
-private $webchat_domains 				= "https://bind.chatme.im/";
-private $providers_link					= "http://chatme.im/servizi/domini-disponibili/";
-private $auto_list_rooms				= "false";
-private $auto_subscribe					= "false";
-private $hide_muc_server				= "false";
-private $message_carbons				= "true";
-private $prebind						= "false";
-private $show_controlbox_by_default		= "true";
-private $xhr_user_search				= "false";
+private $default	= array(
+				'languages' 				=> '/languages/', 
+				'placeholder' 				=> ' e.g. chatme.im',	
+				'language'				=> 'en',
+				'webchat' 				=> 'https://bind.chatme.im/',
+				'providers_link'			=> 'http://chatme.im/servizi/domini-disponibili/',
+				'auto_list_rooms'			=> 'false',
+				'auto_subscribe'			=> 'false',
+				'hide_muc_server'			=> 'false',
+				'message_carbons'			=> 'true',
+				'prebind'				=> 'false',
+				'show_controlbox_by_default'		=> 'true',
+				'xhr_user_search'			=> 'false',
+				'conver'				=> '0.9.3',				
+				);
 
 	function __construct() {
-		add_action('wp_enqueue_scripts', 	array( $this, 'get_chatme_messenger_head') );
+		add_action('wp_enqueue_scripts', 		array( $this, 'get_chatme_messenger_head') );
 		add_action('wp_footer', 			array( $this, 'get_chatme_messenger_footer') );
 		add_action('admin_menu', 			array( $this, 'chatme_messenger_menu') );
 		add_action('admin_init', 			array( $this, 'register_messenger_mysettings') );
@@ -38,7 +39,7 @@ private $xhr_user_search				= "false";
 
 	function my_plugin_init() {
       	$plugin_dir = basename(dirname(__FILE__));
-      	load_plugin_textdomain( 'chatmeim-mini-messenger', null, $plugin_dir . $this->languages );
+      	load_plugin_textdomain( 'chatmeim-mini-messenger', null, $plugin_dir . $this->default['languages'] );
 	}
 	
 	function add_action_messenger_links ( $links ) {
@@ -62,33 +63,56 @@ private $xhr_user_search				= "false";
 
 	function get_chatme_messenger_head() {
 		
-		wp_enqueue_style( 'ConverseJS', plugins_url( '/core/css/converse.min.css', __FILE__ ), array(), $this->conver );
-		wp_enqueue_script( 'ConverseJS', plugins_url( '/core/converse.min.js', __FILE__ ), array(), $this->conver, false );
+		wp_register_style( 'ConverseJS', plugins_url( '/core/css/converse.min.css', __FILE__ ), array(), $this->default['conver'] );
+		wp_enqueue_style( 'ConverseJS' );
+		wp_register_script( 'ConverseJS', plugins_url( '/core/converse.min.js', __FILE__ ), array(), $this->default['conver'], false );
+		wp_enqueue_script( 'ConverseJS' );
 	}
 
 	function get_chatme_messenger_footer() {
 
-		$lng = (get_option('language') == '') ? $this->language : get_option('language');
-		$url = (get_option('hosted') == $this->hosted) ? $this->webchat : $this->webchat_domains;
+		$setting	= array(
+					'language'	=> esc_html(get_option('language')),			
+						);
+						
+		foreach( $setting as $k => $settings )
+			if( false == $settings )
+				unset( $setting[$k]);
+						
+		$actual = wp_parse_args( $setting, $this->default );	
 
-	echo "\n".'<!-- Messenger -->
+	printf( '
+		
+		<!-- Messenger -->
 		<script defer>
 			require([\'converse\'], function (converse) {
 		    	converse.initialize({
-		        	auto_list_rooms: ' . $this->auto_list_rooms . ',
-		        	auto_subscribe: ' . $this->auto_subscribe . ',
-		        	bosh_service_url: "' . $url . '",
-					domain_placeholder: "' . $this->placeholder . '",
-					providers_link: "' . $this->providers_link . '",
-		        	hide_muc_server: ' . $this->hide_muc_server . ',
-		        	i18n: locales.'.$lng.',
-					message_carbons: ' . $this->message_carbons . ',
-		        	prebind: ' . $this->prebind . ',
-		        	show_controlbox_by_default: ' . $this->show_controlbox_by_default . ',
-		        	xhr_user_search: ' . $this->xhr_user_search . '
+		        	auto_list_rooms: %s,
+		        	auto_subscribe: %s,
+		        	bosh_service_url: "%s",
+				domain_placeholder: "%s",
+				providers_link: "%s",
+		        	hide_muc_server: %s,
+		        	i18n: locales.%s,
+				message_carbons: %s,
+		        	prebind: %s,
+		        	show_controlbox_by_default: %s,
+		        	xhr_user_search: %s
 		    	});
 			});
-		</script>';
+		</script>',
+			$actual['auto_list_rooms'],
+			$actual['auto_subscribe'], 
+			$actual['webchat'],
+			$actual['placeholder'],
+			$actual['providers_link'],
+			$actual['hide_muc_server'],
+			$actual['language'],
+			$actual['message_carbons'],
+			$actual['prebind'],
+			$actual['show_controlbox_by_default'],
+			$actual['xhr_user_search'] 
+			);
 	}
 
 	function chatme_messenger_menu() {
@@ -121,14 +145,13 @@ private $xhr_user_search				= "false";
         	<select id="language" name="language">
         		<option value="de" <?php selected('de', get_option('language')); ?>>Deutsch</option>
         		<option value="en" <?php selected('en', get_option('language')); ?>>English</option>
-        		<option value="es" <?php selected('es', get_option('language')); ?>>Español</option>
+        		<option value="es" <?php selected('es', get_option('language')); ?>>Espanol</option>
         		<option value="fr" <?php selected('fr', get_option('language')); ?>>Français</option>
         		<option value="it" <?php selected('it', get_option('language')); ?>>Italiano</option>
         		<option value="ja" <?php selected('ja', get_option('language')); ?>>Ja</option>
         		<option value="nl" <?php selected('nl', get_option('language')); ?>>Nederlands</option>
         		<option value="ru" <?php selected('ru', get_option('language')); ?>>Ru</option>
-        	</select><br />
-            <input type="checkbox" value="1" name="hosted" <?php if (get_option('hosted')=="1") { echo 'checked=""'; } ?> /> <?php _e("Hosted Domain", 'chatmeim-mini-messenger'); ?><br /><?php _e("For Active an hosted domain with XMPP service <a href='http://chatme.im' target='_blank'>visit www.chatme.im</>", 'chatmeim-mini-messenger'); ?>
+        	</select>
         	</td>
         	</tr>
     	</table>
@@ -140,7 +163,7 @@ private $xhr_user_search				= "false";
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 		<input type="hidden" name="cmd" value="_s-xclick">
 		<input type="hidden" name="hosted_button_id" value="8CTUY8YDK5SEL">
-		<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+		<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal ? The safer, easier way to pay online.">
 		<img alt="" border="0" src="https://www.paypalobjects.com/it_IT/i/scr/pixel.gif" width="1" height="1">
 	</form>
 
