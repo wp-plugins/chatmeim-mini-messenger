@@ -10,7 +10,8 @@ Text Domain: chatmeim-mini-messenger
 Domain Path: /languages/
 */
 
-class ChatMe_Messenger {
+namespace ChatMe;
+class Messenger {
 
 private $default	= array(
 				'languages' 				=> '/languages/', 
@@ -174,5 +175,5 @@ private $default	= array(
 <?php 
 	}
 } 
-new ChatMe_Messenger;
+new \ChatMe\Messenger;
 ?>
