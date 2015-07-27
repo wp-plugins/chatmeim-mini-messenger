@@ -10,8 +10,7 @@ Text Domain: chatmeim-mini-messenger
 Domain Path: /languages/
 */
 
-namespace ChatMe;
-class Messenger {
+class ChatMe_Messenger {
 
 private $default	= array(
 				'languages' 				=> '/languages/', 
@@ -144,20 +143,21 @@ private $default	= array(
         		<th scope="row"><?php _e("Mini Messenger language", 'chatmeim-mini-messenger'); ?></th>
         	<td>
         	<select id="language" name="language">
-        		<option value="de" <?php selected('de', get_option('language')); ?>>Deutsch</option>
-        		<option value="en" <?php selected('en', get_option('language')); ?>>English</option>
-        		<option value="es" <?php selected('es', get_option('language')); ?>>Espanol</option>
-        		<option value="fr" <?php selected('fr', get_option('language')); ?>>Français</option>
-        		<option value="it" <?php selected('it', get_option('language')); ?>>Italiano</option>
-        		<option value="ja" <?php selected('ja', get_option('language')); ?>>Ja</option>
-        		<option value="nl" <?php selected('nl', get_option('language')); ?>>Nederlands</option>
-        		<option value="ru" <?php selected('ru', get_option('language')); ?>>Ru</option>
+        		<option value="de" <?php selected('de', get_option('language')); ?>><?php _e("Deutsch", 'chatmeim-mini-messenger'); ?></option>
+        		<option value="en" <?php selected('en', get_option('language')); ?>><?php _e("English", 'chatmeim-mini-messenger'); ?></option>
+        		<option value="es" <?php selected('es', get_option('language')); ?>><?php _e("Espa&ntilde;ol", 'chatmeim-mini-messenger'); ?></option>
+        		<option value="fr" <?php selected('fr', get_option('language')); ?>><?php _e("Fran&ccedil;ais", 'chatmeim-mini-messenger'); ?></option>
+        		<option value="it" <?php selected('it', get_option('language')); ?>><?php _e("Italiano", 'chatmeim-mini-messenger'); ?></option>
+        		<option value="ja" <?php selected('ja', get_option('language')); ?>><?php _e("Japan", 'chatmeim-mini-messenger'); ?></option>
+        		<option value="nl" <?php selected('nl', get_option('language')); ?>><?php _e("Nederlands", 'chatmeim-mini-messenger'); ?></option>
+        		<option value="ru" <?php selected('ru', get_option('language')); ?>><?php _e("Russian", 'chatmeim-mini-messenger'); ?></option>
         	</select>
         	</td>
         	</tr>
     	</table>
     
-    	<p class="submit"><input type="submit" class="button-primary" value="<?php _e('Save Changes', 'chatmeim-mini-messenger') ?>" /></p>
+    	<?php submit_button(); ?>
+
     	<p><?php _e('For Ever request you can use our <a href="http://chatme.im/forums" target="_blank">forum</a>',  'chatmeim-mini-messenger'); ?></p>
 
 	</form>
@@ -175,5 +175,5 @@ private $default	= array(
 <?php 
 	}
 } 
-new \ChatMe\Messenger;
+new ChatMe_Messenger;
 ?>
