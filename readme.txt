@@ -35,10 +35,19 @@ For Every request visit our [Forum](http://chatme.im/forums)
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+= From your WordPress dashboard =
 
-1. Upload this directory to your plugins directory. It will create a 'wp-content/plugins/chatmeim-mini-messenger/' directory or install it via the WordPress.org plugin directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress
+1. Visit 'Plugins > Add New'
+2. Search for 'ChatMe Mini Messenger'
+3. Activate ChatMe Mini Messenger from your Plugins page.
+4. Click Options from your Plugin page
+
+= From WordPress.org =
+
+1. Download ChatMe Mini Messenger.
+2. Upload the 'chatmeim-mini-messenger' directory to your '/wp-content/plugins/' directory, using your favorite method (ftp, sftp, scp, etc...)
+3. Activate ChatMe Mini Messenger from your Plugins page.
+4. Click Options from your Plugin page
 
 == Frequently Asked Questions ==
 
